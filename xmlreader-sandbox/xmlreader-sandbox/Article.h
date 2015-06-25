@@ -10,7 +10,7 @@
 
 @interface Article : NSObject
 
-@property (nonatomic) NSURL *imageURL;
+@property (nonatomic) NSString *imageURL;
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *pubDate;
 @property (nonatomic) NSString *author;

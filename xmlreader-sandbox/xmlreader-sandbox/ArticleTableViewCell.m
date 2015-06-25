@@ -23,4 +23,18 @@
     // Configure the view for the selected state
 }
 
+
+- (void)awakeFromNib
+{
+    self.imageView.autoresizesSubviews = NO;
+    self.imageView.clipsToBounds = YES;
+}
+
+
+- (void)prepareForReuse
+{
+    self.imageView.autoresizesSubviews = NO;
+    self.imageView.clipsToBounds = YES;
+}
+
 @end

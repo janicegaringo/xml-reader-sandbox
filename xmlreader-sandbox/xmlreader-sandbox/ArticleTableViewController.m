@@ -10,6 +10,7 @@
 #import "ArticleTableViewCell.h"
 #import "DataSource.h"
 #import "Article.h" 
+#import <SDWebImage/UIImageView+WebCache.h>
 
 static NSString *xmlUrl = @"http://www.cbc.ca/cmlink/rss-topstories";
 
@@ -67,8 +68,7 @@ static NSString *xmlUrl = @"http://www.cbc.ca/cmlink/rss-topstories";
         NSString *str = descriptions[i];
         NSArray *output = [str componentsSeparatedByString:@"src='"];
         NSArray *output2 = [output[1] componentsSeparatedByString:@"' />"];
-        
-        article.imageURL = [NSURL URLWithString:output2[0]];
+        article.imageURL = output2[0];
         
         [self.articles addObject:article];
     }
@@ -76,6 +76,12 @@ static NSString *xmlUrl = @"http://www.cbc.ca/cmlink/rss-topstories";
 }
 
 #pragma mark - Table view data source
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 85.0;
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -106,11 +112,21 @@ static NSString *xmlUrl = @"http://www.cbc.ca/cmlink/rss-topstories";
     cell.titleLabel.text = article.title;
     cell.pubDateLabel.text = article.pubDate;
     cell.authorLabel.text = article.author;
-
-    // cell.imageView.image = UIImage imageWithData:<#(NSData *)#>
+    
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:article.imageURL]
+                      placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     return cell;
     
+}
+
+
+- (UIImage *)getImageFromURL:(NSString *)fileURL
+{
+    UIImage *result;
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
+    result = [UIImage imageWithData:data];
+    return result;
 }
 
 
