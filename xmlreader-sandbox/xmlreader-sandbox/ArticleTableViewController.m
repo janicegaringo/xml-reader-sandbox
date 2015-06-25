@@ -33,6 +33,11 @@ static NSString *xmlUrl = @"http://www.cbc.ca/cmlink/rss-topstories";
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
+    }
+    
    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -173,5 +178,18 @@ static NSString *xmlUrl = @"http://www.cbc.ca/cmlink/rss-topstories";
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    
+    if(UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    }
+    
+    else {
+        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
+    }
+}
 
 @end
