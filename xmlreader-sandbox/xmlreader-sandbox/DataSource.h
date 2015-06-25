@@ -12,6 +12,6 @@
 
 + (instancetype)masterDataSource;
 
-- (void)loadXMLWithUrl:(NSURL *)url;
+- (NSDictionary *)loadXMLWithUrl:(NSURL *)url;
 
 @end

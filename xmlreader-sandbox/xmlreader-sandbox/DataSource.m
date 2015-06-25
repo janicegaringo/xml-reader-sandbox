@@ -26,23 +26,19 @@
 }
 
 
-- (void)loadXMLWithUrl:(NSURL *)url
+- (NSDictionary *)loadXMLWithUrl:(NSURL *)url
 {
-    
     NSError *error;
-    
     NSData *data = [NSData dataWithContentsOfURL:url options:NSDataReadingUncached error:&error];
     
     if(error) {
         NSLog(@"error : %@", error.localizedDescription);
-        return;
+        return nil;
     }
     
     XMLDictionaryParser *parser = [XMLDictionaryParser new];
-    
     NSDictionary *dictionary = [parser dictionaryWithData:data];
-    
-    NSLog(@"dictionary : %@", dictionary);
+    return dictionary; 
 }
 
 @end
