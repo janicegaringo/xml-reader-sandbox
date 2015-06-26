@@ -37,4 +37,11 @@
     self.imageView.clipsToBounds = YES;
 }
 
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.imageView.frame = CGRectMake(0,0,150.0,184.0);    
+}
+
 @end
