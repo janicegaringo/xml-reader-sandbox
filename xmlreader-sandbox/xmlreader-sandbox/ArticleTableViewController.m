@@ -73,11 +73,6 @@ static NSString *xmlUrl = @"http://www.cbc.ca/cmlink/rss-topstories";
 
 #pragma mark - Table view data source
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 85.0;
-}
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
