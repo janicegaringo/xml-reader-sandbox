@@ -61,15 +61,25 @@ static NSString *xmlUrl = @"http://www.cbc.ca/cmlink/rss-topstories";
     NSArray *pubdates = [channelDictionary valueForKeyPath:@"item.pubDate"];
     NSArray *authors = [channelDictionary valueForKeyPath:@"item.author"];
     NSArray *descriptions = [channelDictionary valueForKeyPath:@"item.description"];
+    
+    NSLog(@"titles : %@", titles);
+    
+    NSLog(@"links : %@", links);
+    
+    NSLog(@"pubdates : %@", pubdates);
+
+    NSLog(@"authors : %@", authors);
+
 
     for(int i=0; i<titles.count; i++) {
         
         Article *article = [Article new];
-        article.title = titles[i];
-        article.pubDate = pubdates[i];
-        article.author = authors[i];
-        article.articleUrl = [NSURL URLWithString:links[i]];
         
+        article.title = (titles[i] != (id)[NSNull null]) ? titles[i] : @"";
+        article.pubDate = (pubdates[i] != (id)[NSNull null]) ? pubdates[i] : @"";
+        article.author = (authors[i] != (id)[NSNull null]) ? authors[i] : @"";
+        article.articleUrl = (links[i] != (id)[NSNull null]) ? links[i] : @"";
+
         NSString *str = descriptions[i];
         NSArray *output = [str componentsSeparatedByString:@"src='"];
         NSArray *output2 = [output[1] componentsSeparatedByString:@"' />"];
@@ -106,11 +116,6 @@ static NSString *xmlUrl = @"http://www.cbc.ca/cmlink/rss-topstories";
     
     ArticleTableViewCell *cell = (ArticleTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-//    NSString *thumbnailURL = [NSString stringWithFormat:@"%@", self.thumbnailUrlArray[indexPath.row]];
-//    NSString *captionString = [NSString stringWithFormat:@"%@ from %@", self.captionArray[indexPath.row], self.userArray[indexPath.row]];
-    
-//    cell.thumbnailView.image = [self getImageFromURL:thumbnailURL];
-//    cell.captionLabel.text = captionString;
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     
     Article *article = self.articles[indexPath.row];
@@ -122,7 +127,6 @@ static NSString *xmlUrl = @"http://www.cbc.ca/cmlink/rss-topstories";
                       placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     return cell;
-    
 }
 
 

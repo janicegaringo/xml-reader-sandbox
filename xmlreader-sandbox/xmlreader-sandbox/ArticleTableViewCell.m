@@ -28,6 +28,8 @@
 {
     self.imageView.autoresizesSubviews = NO;
     self.imageView.clipsToBounds = YES;
+    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+
 }
 
 
@@ -35,13 +37,14 @@
 {
     self.imageView.autoresizesSubviews = NO;
     self.imageView.clipsToBounds = YES;
+    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.imageView.frame = CGRectMake(0,0,150.0,184.0);    
+    self.imageView.frame = CGRectMake(8.0,8.0,150.0,85.0);
 }
 
 @end

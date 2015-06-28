@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -11,6 +12,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="ArticleTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0hw-vt-Kp2" customClass="ArticleTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="22" sectionFooterHeight="22" id="Q0F-g0-SQT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -84,18 +86,18 @@
                                             <exclude reference="k1B-u3-QkW"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="Qh2-wo-C1Y"/>
-                                            <exclude reference="dMY-AJ-Iiq"/>
-                                            <exclude reference="v0R-hi-7so"/>
+                                            <exclude reference="4o9-wu-0Pl"/>
+                                            <exclude reference="ci3-wW-j5A"/>
+                                            <exclude reference="nj6-Gy-07z"/>
+                                            <exclude reference="uqZ-jd-80y"/>
                                             <exclude reference="4f7-Tv-PEO"/>
                                             <exclude reference="85N-Bc-ERC"/>
                                             <exclude reference="Dg4-W4-Nwg"/>
                                             <exclude reference="9gI-qS-lKH"/>
                                             <exclude reference="uyF-4b-zQn"/>
-                                            <exclude reference="4o9-wu-0Pl"/>
-                                            <exclude reference="ci3-wW-j5A"/>
-                                            <exclude reference="nj6-Gy-07z"/>
-                                            <exclude reference="uqZ-jd-80y"/>
+                                            <exclude reference="Qh2-wo-C1Y"/>
+                                            <exclude reference="dMY-AJ-Iiq"/>
+                                            <exclude reference="v0R-hi-7so"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -106,18 +108,18 @@
                                             <include reference="k1B-u3-QkW"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="Qh2-wo-C1Y"/>
-                                            <include reference="dMY-AJ-Iiq"/>
-                                            <include reference="v0R-hi-7so"/>
+                                            <include reference="4o9-wu-0Pl"/>
+                                            <include reference="ci3-wW-j5A"/>
+                                            <include reference="nj6-Gy-07z"/>
+                                            <include reference="uqZ-jd-80y"/>
                                             <include reference="4f7-Tv-PEO"/>
                                             <include reference="85N-Bc-ERC"/>
                                             <include reference="Dg4-W4-Nwg"/>
                                             <include reference="9gI-qS-lKH"/>
                                             <include reference="uyF-4b-zQn"/>
-                                            <include reference="4o9-wu-0Pl"/>
-                                            <include reference="ci3-wW-j5A"/>
-                                            <include reference="nj6-Gy-07z"/>
-                                            <include reference="uqZ-jd-80y"/>
+                                            <include reference="Qh2-wo-C1Y"/>
+                                            <include reference="dMY-AJ-Iiq"/>
+                                            <include reference="v0R-hi-7so"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -138,6 +140,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rFV-Ap-epH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="699" y="363"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="oKG-Sw-CHB">
+            <objects>
+                <viewController id="Aus-JI-kHg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="94X-SE-wcj"/>
+                        <viewControllerLayoutGuide type="bottom" id="hi1-FF-zku"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BEk-2m-SUU">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="su1-Dk-Mc9">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+                                </variation>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="su1-Dk-Mc9"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="su1-Dk-Mc9"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xEJ-FI-Qwh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1527" y="363"/>
         </scene>
     </scenes>
 </document>
