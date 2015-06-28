@@ -10,6 +10,7 @@
 #import "ArticleTableViewCell.h"
 #import "DataSource.h"
 #import "Article.h" 
+#import "DetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 static NSString *xmlUrl = @"http://www.cbc.ca/cmlink/rss-topstories";
@@ -32,12 +33,7 @@ static NSString *xmlUrl = @"http://www.cbc.ca/cmlink/rss-topstories";
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    if(UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
-    }
-    
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;    
    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -122,6 +118,7 @@ static NSString *xmlUrl = @"http://www.cbc.ca/cmlink/rss-topstories";
     cell.titleLabel.text = article.title;
     cell.pubDateLabel.text = article.pubDate;
     cell.authorLabel.text = article.author;
+    cell.detailUrl = article.articleUrl;
     
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:article.imageURL]
                       placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
@@ -136,6 +133,22 @@ static NSString *xmlUrl = @"http://www.cbc.ca/cmlink/rss-topstories";
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
     result = [UIImage imageWithData:data];
     return result;
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ArticleTableViewCell *cell = (ArticleTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    NSString *cellUrl = cell.detailUrl;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    DetailViewController *detailViewController = (DetailViewController*)[storyboard instantiateViewControllerWithIdentifier:@"detailViewController"];
+    
+    detailViewController.detailViewUrl = cellUrl;
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    
 }
 
 
@@ -186,14 +199,6 @@ static NSString *xmlUrl = @"http://www.cbc.ca/cmlink/rss-topstories";
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-    
-    if(UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
-        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    }
-    
-    else {
-        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
-    }
 }
 
 @end

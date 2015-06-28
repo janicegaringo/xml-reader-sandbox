@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *pubDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
+@property (nonatomic) NSString *detailUrl; 
 
 @end

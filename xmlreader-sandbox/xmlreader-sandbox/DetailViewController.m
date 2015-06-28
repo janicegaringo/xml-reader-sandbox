@@ -10,13 +10,22 @@
 
 @interface DetailViewController ()
 
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+
 @end
 
 @implementation DetailViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    if(self.detailViewUrl) {
+        NSURL *url = [NSURL URLWithString:self.detailViewUrl];
+        NSURLRequest *requestObject = [NSURLRequest requestWithURL:url];
+        [self.webView loadRequest:requestObject];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning {

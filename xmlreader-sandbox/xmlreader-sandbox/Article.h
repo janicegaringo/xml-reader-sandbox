@@ -14,6 +14,6 @@
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *pubDate;
 @property (nonatomic) NSString *author;
-@property (nonatomic) NSURL *articleUrl;
+@property (nonatomic) NSString *articleUrl;
 
 @end
