@@ -10,8 +10,6 @@
 
 @interface ArticleTableViewCell ()
 
-
-
 @end
 
 @implementation ArticleTableViewCell
@@ -43,7 +41,6 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    // self.articleImageView.frame = CGRectMake(8.0,8.0,150.0,85.0);
 }
 
 @end
