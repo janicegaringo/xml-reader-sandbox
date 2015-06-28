@@ -28,12 +28,6 @@ static NSString *xmlUrl = @"http://www.cbc.ca/cmlink/rss-topstories";
     [super viewDidLoad];
     
     self.articles = [@[] mutableCopy];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;    
    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
