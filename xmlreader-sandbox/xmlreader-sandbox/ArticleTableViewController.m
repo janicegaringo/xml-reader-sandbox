@@ -120,7 +120,7 @@ static NSString *xmlUrl = @"http://www.cbc.ca/cmlink/rss-topstories";
     cell.authorLabel.text = article.author;
     cell.detailUrl = article.articleUrl;
     
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:article.imageURL]
+    [cell.articleImageView sd_setImageWithURL:[NSURL URLWithString:article.imageURL]
                       placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     return cell;
